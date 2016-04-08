@@ -44,8 +44,7 @@ task :remind do
     RestClient.post(
       'https://slack.com/api/chat.postMessage',
       token: SLACK_TOKEN,
-      # channel: "@#{slack_username}",
-      channel: "@tim",
+      channel: "@#{slack_username}",
       text: "Please review:\n#{links.join("\n")}",
       pretty: 1,
       icon_emoji: SLACK_BOT_ICON,
