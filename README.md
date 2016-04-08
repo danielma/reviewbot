@@ -1,4 +1,4 @@
-# Reviewbot
+# Pull Request Remindbot
 
 Our team wanted to be reminded at regular intervals during the day (2 specific times each day) about pending Pull Requests,
 so this little Ruby rake task was created.
