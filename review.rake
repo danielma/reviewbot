@@ -11,12 +11,14 @@ SLACK_TOKEN    = ENV['SLACK_TOKEN']
 SLACK_BOT_NAME = 'reviewbot'
 SLACK_BOT_ICON = ':sleuth_or_spy:'
 TIMEZONE       = ENV['TIMEZONE']
+REMIND_DAYS    = 1..5
 REMIND_HOURS   = JSON.parse(ENV['REVIEW_HOURS'])
 REVIEWERS      = JSON.parse(ENV['REVIEWERS'])
 
 desc "Send reminders to team members to review PRs"
 task :remind do
-  exit unless REMIND_HOURS.include?(Timezone[TIMEZONE].utc_to_local(Time.now).hour)
+  time = Timezone[TIMEZONE].utc_to_local(Time.now)
+  exit unless REMIND_DAYS.include?(time.wday) && REMIND_HOURS.include?(time.hour)
 
   notifications = GH.pulls.list(OWNER, REPO).body.each_with_object({}) do |pr, by_user|
     print '.'
