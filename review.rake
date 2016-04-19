@@ -14,8 +14,9 @@ TIMEZONE       = ENV['TIMEZONE']
 REMIND_DAYS    = 1..5
 REMIND_HOURS   = JSON.parse(ENV['REVIEW_HOURS'])
 REVIEWERS      = JSON.parse(ENV['REVIEWERS'])
+THUMB_REGEX    = /:[-\+]1:|^[-\+]1|\u{1F44D}|\u{1F44E}/
 
-desc "Send reminders to team members to review PRs"
+desc 'Send reminders to team members to review PRs'
 task :remind do
   time = Timezone[TIMEZONE].utc_to_local(Time.now)
   exit unless REMIND_DAYS.include?(time.wday) && REMIND_HOURS.include?(time.hour)
@@ -26,8 +27,13 @@ task :remind do
     next if labels.include?('NOT READY')
     next if labels.include?('+2')
 
-    comments = GH.issues.comments.list(OWNER, REPO, number: pr.number).body.map { |c| { user: c.user.login, comment: c.body } }
-    reviewers = comments.select { |c| c[:comment] =~ /^[-\+]1|:[-\+]1:/ }.map { |c| c[:user] }
+    comments = GH.issues.comments.list(OWNER, REPO, number: pr.number).body.map do |comment|
+      {
+        user: comment.user.login,
+        comment: comment.body
+      }
+    end
+    reviewers = comments.select { |c| c[:comment] =~ THUMB_REGEX }.map { |c| c[:user] }
 
     candidates = REVIEWERS.keys - [pr.assignee.login] - reviewers
 
