@@ -35,7 +35,8 @@ task :remind do
     end
     reviewers = comments.select { |c| c[:comment] =~ THUMB_REGEX }.map { |c| c[:user] }
 
-    candidates = REVIEWERS.keys - [pr.assignee.login] - reviewers
+    assignees = pr.assignee ? [pr.assignee.login] : []
+    candidates = REVIEWERS.keys - assignees - reviewers
 
     candidates.each do |candidate|
       by_user[candidate] ||= []
