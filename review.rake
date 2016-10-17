@@ -25,6 +25,7 @@ task :remind do
     print '.'
     labels = GH.issues.get(OWNER, REPO, pr.number).labels.map(&:name)
     next if labels.include?('NOT READY')
+    next if labels.include?('Blocked')
     next if labels.include?('+2')
 
     comments = GH.issues.comments.list(OWNER, REPO, number: pr.number).body.map do |comment|
