@@ -16,6 +16,15 @@ REMIND_HOURS   = JSON.parse(ENV['REVIEW_HOURS'])
 REVIEWERS      = JSON.parse(ENV['REVIEWERS'])
 THUMB_REGEX    = /:[-\+]1:|^[-\+]1|\u{1F44D}|\u{1F44E}/
 
+def get_reviews(owner, repo, number)
+  # github_api doesn't support this yet
+  conn = Faraday.new(
+    url: 'https://api.github.com',
+    headers: { Accept: 'application/vnd.github.black-cat-preview+json' }
+  )
+  JSON.parse(conn.get("/repos/#{owner}/#{repo}/pulls/#{number}/reviews?access_token=#{ENV['GH_AUTH_TOKEN']}").body)
+end
+
 desc 'Send reminders to team members to review PRs'
 task :remind do
   time = Timezone[TIMEZONE].utc_to_local(Time.now)
@@ -35,6 +44,7 @@ task :remind do
       }
     end
     reviewers = comments.select { |c| c[:comment] =~ THUMB_REGEX }.map { |c| c[:user] }
+    reviewers += get_reviews(OWNER, REPO, pr.number).map { |r| r['user']['login'] }
 
     assignees = pr.assignee ? [pr.assignee.login] : []
     candidates = REVIEWERS.keys - assignees - reviewers
