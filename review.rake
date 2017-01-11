@@ -39,9 +39,9 @@ task :remind do
 
     notifications = GH.pulls.list(OWNER, app).body.each_with_object({}) do |pr, by_user|
       print '.'
-      labels = GH.issues.get(OWNER, app, pr.number).labels.map(&:name)
-      next if labels.include?('NOT READY')
-      next if labels.include?('Blocked')
+      labels = GH.issues.get(OWNER, app, pr.number).labels.map(&:name).map(&:downcase)
+      next if labels.include?('not ready')
+      next if labels.include?('blocked')
       next if labels.include?('+2')
 
       comments = GH.issues.comments.list(OWNER, app, number: pr.number).body.map do |comment|
