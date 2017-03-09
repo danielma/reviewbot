@@ -2,6 +2,7 @@ GEM
   remote: https://rubygems.org/
   specs:
     addressable (2.4.0)
+    awesome_print (1.7.0)
     descendants_tracker (0.0.4)
       thread_safe (~> 0.3, >= 0.3.1)
     domain_name (0.5.20160310)
@@ -45,9 +46,10 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  awesome_print
   github_api
   rest-client
   timezone
 
 BUNDLED WITH
-   1.11.2
+   1.14.6
