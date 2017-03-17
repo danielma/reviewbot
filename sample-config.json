@@ -1,0 +1,18 @@
+{
+  "danielma/reviewbot": {
+    "room": "#reviewbot",
+    "reviewers": [
+      {
+        "github": "danielma",
+        "slack": "dma",
+        "timezone": "America/Los_Angeles"
+      },
+      {
+        "github": "contributor",
+        "slack": "dmas_evil_twin",
+        "timezone": "America/New_York"
+      }
+    ],
+    "hours_to_review": 6
+  }
+}
