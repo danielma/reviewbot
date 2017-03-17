@@ -1,9 +1,9 @@
 # Pull Request Review Reminder Bot
 
-Our team wants to be reminded via Slack to about pending pull requests
-after a certain number of man hours without activity. We calculate man
-hours as the number of cumulative work hours since the pull request
-was submitted.
+Our team wants to be reminded via Slack about pending pull requests
+after a certain number of work hours without activity. We calculate
+work hours as the cumulative number of online hours since the pull
+request was submitted.
 
 ## Setup
 
