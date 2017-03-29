@@ -1,6 +1,6 @@
 # Pull Request Review Reminder Bot
 
-![Example Slack Message](https://raw.github.com/kevinthompson/reviewbot/kt/docs-improvements/docs/images/slack-example.png)
+![Example Slack Message](https://raw.github.com/danielma/reviewbot/master/docs/images/slack-example.png)
 
 Our team wants to be reminded via Slack about pending pull requests
 after a certain number of work hours without activity. We calculate
@@ -15,14 +15,14 @@ request was submitted.
 2. Click "Generate New Token"
 3. Select "repo" permissions
 
-![Github Access Token Permissions](https://raw.github.com/kevinthompson/reviewbot/kt/docs-improvements/docs/images/github-token-permissions.png)
+![Github Access Token Permissions](https://raw.github.com/danielma/reviewbot/master/docs/images/github-token-permissions.png)
 
 #### Create Slack Legacy Token
 
 1. Visit https://api.slack.com/custom-integrations/legacy-tokens
 2. Issue a token if one does not exist
 
-![Slack Legacy Token Generation](https://raw.github.com/kevinthompson/reviewbot/kt/docs-improvements/docs/images/slack-token.png)
+![Slack Legacy Token Generation](https://raw.github.com/danielma/reviewbot/master/docs/images/slack-token.png)
 
 #### Configure Repos
 
@@ -71,7 +71,7 @@ heroku addons:create scheduler:standard
 heroku addons:open scheduler
 ```
 
-![Heroku Scheduler Task Creation](https://raw.github.com/kevinthompson/reviewbot/kt/docs-improvements/docs/images/heroku-scheduler.png)
+![Heroku Scheduler Task Creation](https://raw.github.com/danielma/reviewbot/master/docs/images/heroku-scheduler.png)
 
 ## Testing
 
