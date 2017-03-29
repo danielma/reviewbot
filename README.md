@@ -59,7 +59,7 @@ The `reviewers` key is a JSON array containing a github username, slack username
 
 #### Create Application
 ```
-git clone https://github.com/seven1m/reviewbot
+git clone https://github.com/danielma/reviewbot
 cd reviewbot
 heroku apps:create NAME
 heroku config:set \
@@ -83,4 +83,4 @@ heroku run rake remind
 
 ## Copyright
 
-Copyright Tim Morgan, Licensed MIT
+Copyright Daniel Ma, Licensed MIT
