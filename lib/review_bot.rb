@@ -13,4 +13,5 @@ require_relative 'review_bot/reviewer'
 require_relative 'review_bot/reminder'
 
 module ReviewBot
+  VERSION = '0.2.0'.freeze
 end
