@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 require 'json'
 
 CONFIG = JSON.parse(ENV['CONFIG'])
@@ -9,12 +10,12 @@ require_relative 'lib/review_bot'
 
 desc 'Send reminders to team members to review PRs'
 task :remind, [:mode] do |_t, args|
-  dry_run = args[:mode] == "dry"
+  dry_run = args[:mode] == 'dry'
 
   puts "-- DRY RUN --\n\n" if dry_run
 
   CONFIG.each do |app, app_config|
-    owner, repo = app.split("/")
+    owner, repo = app.split('/')
     room = app_config['room']
 
     puts "#{owner}/#{repo}"
@@ -38,7 +39,7 @@ task :remind, [:mode] do |_t, args|
         channel: room,
         text: message,
         icon_emoji: SLACK_BOT_ICON,
-        username: SLACK_BOT_NAME,
+        username: SLACK_BOT_NAME
       )
     end
   end
