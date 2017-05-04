@@ -15,15 +15,8 @@ module ReviewBot
       return if notifications.empty?
 
       # :smile_cat: https://github.com/danielma/reviewbot/pull/3 needs a first review from :dma: :dmas_evil_twin:
-      message = ":smile_cat: :wave:\n"
-      message + notifications.map do |notification|
-        [
-          "#{notification.pull_request.html_url} needs a",
-          notification.pull_request.needs_first_review? ? 'first review' : 'second review',
-          'from',
-          notification.suggested_reviewers.map { |r| ":#{r.slack}:" }.join(' ')
-        ].join(' ')
-      end.join("\n\n")
+      message_header = ":smile_cat: :wave:\n"
+      message_header + notifications.map(&:message).join("\n\n")
     end
 
     def app_reviewers
@@ -56,10 +49,9 @@ module ReviewBot
 
         next if suggested_reviewers.empty?
 
-        OpenStruct.new(
+        Notification.new(
           pull_request: pull,
-          suggested_reviewers: suggested_reviewers,
-          work_hours_since_last_touch: work_hours_since_last_touch
+          suggested_reviewers: suggested_reviewers
         )
       end
     end

@@ -12,5 +12,9 @@ module ReviewBot
     def work_hour?
       HourOfDay.new(timezone.utc_to_local(Time.now.utc)).work_hour?
     end
+
+    def slack_emoji
+      ":#{slack}:"
+    end
   end
 end
