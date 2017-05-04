@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 module ReviewBot
   class HourOfDay
     # 8am to 5pm are work hours, so we only count the hour if it's inside that range
@@ -14,7 +15,7 @@ module ReviewBot
 
       while rounded_start_time < rounded_end_time
         rounded_start_time += ONE_HOUR
-        work_hours += 1 if new(timezone.utc_to_local rounded_start_time).work_hour?
+        work_hours += 1 if new(timezone.utc_to_local(rounded_start_time)).work_hour?
       end
 
       work_hours
@@ -31,7 +32,7 @@ module ReviewBot
     end
 
     def inspect
-      "HourOfDay(#{rounded_time.strftime("%a-%I%P")} work_hour: #{work_hour?})"
+      "HourOfDay(#{rounded_time.strftime('%a-%I%P')} work_hour: #{work_hour?})"
     end
   end
 end

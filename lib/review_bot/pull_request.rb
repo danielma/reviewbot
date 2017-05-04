@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 module ReviewBot
   class PullRequest < SimpleDelegator
     def needs_review?
@@ -9,9 +10,9 @@ module ReviewBot
     end
 
     def reviewers
-      [comments_from_other_humans, reviews_from_other_humans].flatten.
-        map { |i| i['user']['login'] }.
-        uniq
+      [comments_from_other_humans, reviews_from_other_humans].flatten
+                                                             .map { |i| i['user']['login'] }
+                                                             .uniq
     end
 
     def last_touched_at
@@ -30,9 +31,9 @@ module ReviewBot
           "last touched: #{last_touched_at}",
           "review_in_progress: #{review_in_progress?}",
           "needs_review: #{needs_review?}",
-          "url: #{html_url}",
-        ].join(", ") +
-        " )"
+          "url: #{html_url}"
+        ].join(', ') +
+        ' )'
     end
 
     private
@@ -57,9 +58,9 @@ module ReviewBot
     end
 
     def last_touch
-      @last_touch ||= [comments_from_other_humans, reviews_from_other_humans].flatten.
-                        sort_by { |comment_or_review| comment_or_review['created_at'] || comment_or_review['submitted_at'] }.
-                        last
+      @last_touch ||= [comments_from_other_humans, reviews_from_other_humans].flatten
+                                                                             .sort_by { |comment_or_review| comment_or_review['created_at'] || comment_or_review['submitted_at'] }
+                                                                             .last
     end
 
     def repo_owner
@@ -92,13 +93,13 @@ module ReviewBot
 
     def reviews
       # github_api doesn't support this yet
-      @reviews ||= (
+      @reviews ||= begin
         conn = Faraday.new(
           url: 'https://api.github.com',
           headers: { Accept: 'application/vnd.github.black-cat-preview+json' }
         )
         JSON.parse(conn.get("/repos/#{repo_owner}/#{repo_name}/pulls/#{number}/reviews?access_token=#{ENV['GH_AUTH_TOKEN']}").body)
-      )
+      end
     end
 
     def reviews_from_humans

@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 module ReviewBot
   class Reviewer < OpenStruct
     def work_hours_between(start_time, end_time)
@@ -9,7 +10,7 @@ module ReviewBot
     end
 
     def work_hour?
-      HourOfDay.new(timezone.utc_to_local Time.now.utc).work_hour?
+      HourOfDay.new(timezone.utc_to_local(Time.now.utc)).work_hour?
     end
   end
 end

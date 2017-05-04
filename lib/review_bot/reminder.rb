@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 module ReviewBot
   GH = Github.new(oauth_token: ENV['GH_AUTH_TOKEN'])
 
@@ -18,10 +19,10 @@ module ReviewBot
       message + notifications.map do |notification|
         [
           "#{notification.pull_request.html_url} needs a",
-          notification.pull_request.needs_first_review? ? "first review" : "second review",
-          "from",
-          notification.suggested_reviewers.map { |r| ":#{r.slack}:" }.join(" "),
-        ].join(" ")
+          notification.pull_request.needs_first_review? ? 'first review' : 'second review',
+          'from',
+          notification.suggested_reviewers.map { |r| ":#{r.slack}:" }.join(' ')
+        ].join(' ')
       end.join("\n\n")
     end
 
@@ -49,9 +50,9 @@ module ReviewBot
 
         next if work_hours_since_last_touch < app_config['hours_to_review']
 
-        suggested_reviewers = potential_reviewers.
-                                select(&:work_hour?).
-                                reject do |reviewer|
+        suggested_reviewers = potential_reviewers
+                              .select(&:work_hour?)
+                              .reject do |reviewer|
           pull.reviewers.include?(reviewer['github'])
         end
 
@@ -60,7 +61,7 @@ module ReviewBot
         OpenStruct.new(
           pull_request: pull,
           suggested_reviewers: suggested_reviewers,
-          work_hours_since_last_touch: work_hours_since_last_touch,
+          work_hours_since_last_touch: work_hours_since_last_touch
         )
       end
     end
