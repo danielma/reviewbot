@@ -50,9 +50,7 @@ module ReviewBot
 
         next if work_hours_since_last_touch < app_config['hours_to_review']
 
-        suggested_reviewers = potential_reviewers
-                              .select(&:work_hour?)
-                              .reject do |reviewer|
+        suggested_reviewers = potential_reviewers.reject do |reviewer|
           pull.reviewers.include?(reviewer['github'])
         end
 
