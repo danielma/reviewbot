@@ -1,3 +1,7 @@
+# v0.4.0
+
+- support bamboo HR to see when people are out (2017-05-05)
+
 # v0.3.0
 
 - add PR title to message (2017-05-04)
