@@ -1,15 +1,18 @@
 {
   "danielma/reviewbot": {
     "room": "#reviewbot",
+    "bamboohr_subdomain": "mycompany",
     "reviewers": [
       {
         "github": "danielma",
         "slack": "dma",
+        "bamboohr": 1,
         "timezone": "America/Los_Angeles"
       },
       {
         "github": "contributor",
         "slack": "dmas_evil_twin",
+        "bamboohr": 2,
         "timezone": "America/New_York"
       }
     ],

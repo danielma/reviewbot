@@ -4,6 +4,7 @@ GEM
     addressable (2.4.0)
     ast (2.3.0)
     awesome_print (1.7.0)
+    coderay (1.1.1)
     descendants_tracker (0.0.4)
       thread_safe (~> 0.3, >= 0.3.1)
     domain_name (0.5.20160310)
@@ -21,6 +22,7 @@ GEM
     http-cookie (1.0.2)
       domain_name (~> 0.5)
     jwt (1.5.1)
+    method_source (0.8.2)
     mime-types (2.99.1)
     multi_json (1.11.2)
     multi_xml (0.5.5)
@@ -35,6 +37,10 @@ GEM
     parser (2.4.0.0)
       ast (~> 2.2)
     powerpack (0.1.1)
+    pry (0.10.4)
+      coderay (~> 1.1.0)
+      method_source (~> 0.8.1)
+      slop (~> 3.4)
     rack (1.6.4)
     rainbow (2.2.1)
     rest-client (1.8.0)
@@ -48,6 +54,7 @@ GEM
       ruby-progressbar (~> 1.7)
       unicode-display_width (~> 1.0, >= 1.0.1)
     ruby-progressbar (1.8.1)
+    slop (3.6.0)
     thread_safe (0.3.5)
     timezone (0.99.2)
     unf (0.1.4)
@@ -61,6 +68,7 @@ PLATFORMS
 DEPENDENCIES
   awesome_print
   github_api
+  pry
   rest-client
   rubocop
   timezone
