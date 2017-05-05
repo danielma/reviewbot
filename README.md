@@ -34,21 +34,26 @@ Edit `config.json` to match the needs of your team. Each key in the configuratio
 
 The `reviewers` key is a JSON array containing a github username, slack username, and timezone identifier for each reviewer.
 
+There is optional support for bambooHR to determine who is out on any given day, and to not include them in consideration for who is available to review PRs
+
 ##### Example Config
 
 ```json
 {
   "danielma/reviewbot": {
     "room": "#reviewbot",
+    "bamboohr_subdomain": "mycompany",
     "reviewers": [
       {
         "github": "danielma",
         "slack": "dma",
+        "bamboohr": 1,
         "timezone": "America/Los_Angeles"
       },
       {
         "github": "contributor",
         "slack": "dmas_evil_twin",
+        "bamboohr": 2,
         "timezone": "America/New_York"
       }
     ],
@@ -65,6 +70,7 @@ heroku apps:create NAME
 heroku config:set \
   GH_AUTH_TOKEN=abc-123 \
   SLACK_TOKEN=xoxb-234 \
+  BAMBOOHR_API_KEY=1234 \
   CONFIG="$(cat config.json)"
 git push heroku
 heroku addons:create scheduler:standard

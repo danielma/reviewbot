@@ -23,6 +23,31 @@ module ReviewBot
       @app_reviewers ||= app_config['reviewers'].map { |r| Reviewer.new(r) }
     end
 
+    def out_reviewers
+      return @out_reviewers if defined?(@out_reviewers)
+      return @out_reviewers = [] unless bamboo_hr
+
+      @out_reviewers ||=
+        begin
+          whos_out_ids = bamboo_hr
+                         .whos_out(start_date: Date.today)
+                         .map { |t| t['employeeId'] }
+          app_reviewers.select { |r| whos_out_ids.include? r.bamboohr }
+        end
+    end
+
+    def bamboo_hr
+      return @bamboo_hr if defined?(@bamboo_hr)
+
+      @bamboo_hr ||=
+        if app_config['bamboohr_subdomain']
+          BambooHR.new(
+            api_key: ENV['BAMBOOHR_API_KEY'],
+            subdomain: app_config['bamboohr_subdomain']
+          )
+        end
+    end
+
     def notifications
       @notifications ||= potential_notifications.compact
     end
@@ -35,7 +60,9 @@ module ReviewBot
 
         next unless pull.needs_review?
 
-        potential_reviewers = app_reviewers.reject { |r| r.github == pull.user.login }
+        potential_reviewers = app_reviewers
+                              .reject { |r| r.github == pull.user.login }
+                              .reject { |r| out_reviewers.include? r }
 
         work_hours_since_last_touch = potential_reviewers.map do |reviewer|
           reviewer.work_hours_between(pull.last_touched_at, Time.now.utc)
