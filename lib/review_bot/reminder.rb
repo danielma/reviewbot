@@ -74,7 +74,7 @@ module ReviewBot
           pull.reviewers.include?(reviewer['github'])
         end
 
-        next if suggested_reviewers.empty?
+        next if suggested_reviewers.select(&:work_hour?).empty?
 
         Notification.new(
           pull_request: pull,
