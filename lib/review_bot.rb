@@ -16,5 +16,5 @@ require_relative 'review_bot/notification'
 require_relative 'review_bot/bamboo_hr'
 
 module ReviewBot
-  VERSION = '0.4.0'
+  VERSION = '0.5.0'
 end
