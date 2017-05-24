@@ -6,21 +6,29 @@ module ReviewBot
     end
 
     def needs_first_review?
-      needs_review? && reviewers.count == 0
+      needs_review? && reviewers.count.zero?
     end
 
     def reviewers
-      [comments_from_other_humans, reviews_from_other_humans].flatten
-                                                             .map { |i| i['user']['login'] }
-                                                             .uniq
+      reviews_from_other_humans
+        .map { |r| r.user.login }
+        .uniq
     end
 
     def last_touched_at
       if last_touch
-        Time.parse(last_touch['created_at'] || last_touch['submitted_at'])
+        Time.parse(last_touch.created_at)
       else
         Time.parse(created_at)
       end
+    end
+
+    def repo_owner
+      base.repo.owner.login
+    end
+
+    def repo_name
+      base.repo.name
     end
 
     def inspect
@@ -39,7 +47,7 @@ module ReviewBot
     private
 
     def approved?
-      labels.include?('+2')
+      approvals_count > 1
     end
 
     def blocked?
@@ -51,24 +59,16 @@ module ReviewBot
       when 0
         false
       when 1
-        !labels.include?('+1')
+        approvals_count != 1
       else
         !approved?
       end
     end
 
     def last_touch
-      @last_touch ||= [comments_from_other_humans, reviews_from_other_humans].flatten
-                                                                             .sort_by { |comment_or_review| comment_or_review['created_at'] || comment_or_review['submitted_at'] }
-                                                                             .last
-    end
-
-    def repo_owner
-      base.repo.owner.login
-    end
-
-    def repo_name
-      base.repo.name
+      @last_touch ||= reviews_from_other_humans
+                      .sort_by(&:created_at)
+                      .last
     end
 
     def labels
@@ -79,35 +79,24 @@ module ReviewBot
       @issue ||= GH.issues.get(repo_owner, repo_name, number)
     end
 
-    def comments
-      @comments ||= GH.issues.comments.list(repo_owner, repo_name, number: number).body
-    end
-
-    def comments_from_humans
-      comments.reject { |c| c.user.login.include?('-bot') }
-    end
-
-    def comments_from_other_humans
-      comments_from_humans.select { |c| c.user.login != user.login }
-    end
-
     def reviews
-      # github_api doesn't support this yet
-      @reviews ||= begin
-        conn = Faraday.new(
-          url: 'https://api.github.com',
-          headers: { Accept: 'application/vnd.github.black-cat-preview+json' }
-        )
-        JSON.parse(conn.get("/repos/#{repo_owner}/#{repo_name}/pulls/#{number}/reviews?access_token=#{ENV['GH_AUTH_TOKEN']}").body)
-      end
+      @reviews ||= PullRequestReview.for_pull_request(self)
     end
 
     def reviews_from_humans
-      reviews.reject { |r| r['user']['login'].include?('-bot') }
+      reviews.reject { |r| r.user.login.include?('-bot') }
     end
 
     def reviews_from_other_humans
-      reviews_from_humans.select { |r| r['user']['login'] != user.login }
+      reviews_from_humans.select { |r| r.user.login != user.login }
+    end
+
+    def approvals_count
+      reviews_from_other_humans
+        .select(&:approved?)
+        .map { |r| r.user.login }
+        .uniq
+        .count
     end
   end
 end
