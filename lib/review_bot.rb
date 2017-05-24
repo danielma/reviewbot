@@ -9,6 +9,7 @@ require 'pry'
 
 require_relative 'review_bot/hour_of_day'
 require_relative 'review_bot/pull_request'
+require_relative 'review_bot/pull_request_review'
 require_relative 'review_bot/extensions'
 require_relative 'review_bot/reviewer'
 require_relative 'review_bot/reminder'
