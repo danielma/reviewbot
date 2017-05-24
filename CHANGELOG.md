@@ -1,3 +1,7 @@
+# v0.6.0
+
+- only consider reviews (not comments) as in progress (2017-05-24)
+
 # v0.5.0
 
 - don't send notifications if noone is working (2017-05-15)

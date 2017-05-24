@@ -15,7 +15,7 @@ require_relative 'review_bot/reviewer'
 require_relative 'review_bot/reminder'
 require_relative 'review_bot/notification'
 require_relative 'review_bot/bamboo_hr'
+require_relative 'review_bot/version'
 
 module ReviewBot
-  VERSION = '0.5.0'
 end
