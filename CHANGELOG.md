@@ -1,3 +1,7 @@
+# v0.7.0
+
+- allow app config to specify work days (2017-05-30)
+
 # v0.6.0
 
 - only consider reviews (not comments) as in progress (2017-05-24)
