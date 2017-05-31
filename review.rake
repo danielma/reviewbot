@@ -20,6 +20,8 @@ task :remind, [:mode] do |_t, args|
 
     puts "#{owner}/#{repo}"
 
+    ReviewBot::HourOfDay.work_days = app_config['work_days']
+
     message = ReviewBot::Reminder.new(owner, repo, app_config).message
 
     puts

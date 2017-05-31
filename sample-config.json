@@ -16,6 +16,7 @@
         "timezone": "America/New_York"
       }
     ],
-    "hours_to_review": 6
+    "hours_to_review": 6,
+    "work_days": [1, 2, 3, 4]
   }
 }
