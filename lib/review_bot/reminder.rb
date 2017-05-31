@@ -64,11 +64,11 @@ module ReviewBot
                               .reject { |r| r.github == pull.user.login }
                               .reject { |r| out_reviewers.include? r }
 
-        work_hours_since_last_touch = potential_reviewers.map do |reviewer|
+        person_hours_since_last_touch = potential_reviewers.map do |reviewer|
           reviewer.work_hours_between(pull.last_touched_at, Time.now.utc)
         end.reduce(:+)
 
-        next if work_hours_since_last_touch < app_config['hours_to_review']
+        next if person_hours_since_last_touch < app_config['hours_to_review']
 
         suggested_reviewers = potential_reviewers.reject do |reviewer|
           pull.reviewers.include?(reviewer['github'])
