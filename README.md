@@ -74,7 +74,7 @@ There are two main strategies for using the reviewbot. If you want to run it at 
 | `room` | The slack room for reviewbot to post notifications in. This will usually start with a `#`. | Yes | _(none)_ |
 | `bamboohr_subdomain` | The Bamboo HR subdomain for your organization. This is required for any integration with Bamboo HR to work. | No | _(none)_ |
 | `hours_to_review` | How many person-hours reviewbot should wait before sending a reminder about an idle pull request. For more info, look at the [FAQ](#faq) | Yes | _(none)_ |
-| `work_days` | An array of weekdays that the reviewbot should consider work days. `0` is Sunday. If the key is omitted, the default is to assume that people work Monday-Friday. | No | `[1, 2, 3, 4, 5]` |
+| `work_days` | An array of weekdays that the reviewbot should consider work days. `0` is Sunday. If the key is omitted, the default is to assume that people work Monday-Friday. | No | `[1,2,3,4,5]` |
 
 ##### Reviewer
 
