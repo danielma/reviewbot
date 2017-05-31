@@ -2,10 +2,10 @@
 
 ![Example Slack Message](https://raw.github.com/danielma/reviewbot/master/docs/images/slack-example.png)
 
-Our team wants to be reminded via Slack about pending pull requests
-after a certain number of work hours without activity. We calculate
-work hours as the cumulative number of online hours since the pull
-request was submitted.
+Our team wants to be reminded via Slack about pending pull requests so we can have timely reviews and keep code moving through to production. There are two approaches with this bot: 
+
+1. Set the bot to run at specific times (say, 10am and 3pm every day).
+1. Set the bot to run in intervals (say, every hour), only alerting the channels when a PR has been sitting idle for a certain number of collective working hours. This means the bot is noiser during hours when everyone is working, and quiets down as people end their day.
 
 ## Setup
 
