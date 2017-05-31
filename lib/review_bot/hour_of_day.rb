@@ -4,9 +4,17 @@ module ReviewBot
     # 8am to 5pm are work hours, so we only count the hour if it's inside that range
     WORK_DAY_HOURS = 9..17
     # Monday through Friday
-    WORK_DAYS = 1..5
+    DEFAULT_WORK_DAYS = 1..5
 
     ONE_HOUR = 60 * 60
+
+    class << self
+      attr_writer :work_days
+
+      def work_days
+        @work_days || DEFAULT_WORK_DAYS
+      end
+    end
 
     def self.work_hours_between(start_time, end_time, timezone)
       rounded_start_time = start_time.round_to(ONE_HOUR)
@@ -28,7 +36,7 @@ module ReviewBot
     end
 
     def work_hour?
-      WORK_DAYS.include?(rounded_time.wday) && WORK_DAY_HOURS.include?(rounded_time.hour)
+      self.class.work_days.include?(rounded_time.wday) && WORK_DAY_HOURS.include?(rounded_time.hour)
     end
 
     def inspect
