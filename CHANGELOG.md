@@ -1,3 +1,7 @@
+# v0.7.1
+
+- FIX: handle a case where there are no available reviewers (2017-06-07)
+
 # v0.7.0
 
 - allow app config to specify work days (2017-05-30)
