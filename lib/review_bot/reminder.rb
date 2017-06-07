@@ -66,7 +66,7 @@ module ReviewBot
 
         person_hours_since_last_touch = potential_reviewers.map do |reviewer|
           reviewer.work_hours_between(pull.last_touched_at, Time.now.utc)
-        end.reduce(:+)
+        end.reduce(0, :+)
 
         next if person_hours_since_last_touch < app_config['hours_to_review']
 
