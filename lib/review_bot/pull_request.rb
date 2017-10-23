@@ -2,7 +2,7 @@
 module ReviewBot
   class PullRequest < SimpleDelegator
     def needs_review?
-      !approved? && !blocked? && !review_in_progress?
+      !approved? && !ez_label_approved? && !blocked? && !review_in_progress?
     end
 
     def needs_first_review?
@@ -48,6 +48,10 @@ module ReviewBot
 
     def approved?
       approvals_count > 1
+    end
+
+    def ez_label_approved?
+      labels.include?('ez') && approvals_count.positive?
     end
 
     def blocked?
