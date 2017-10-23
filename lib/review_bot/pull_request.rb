@@ -47,7 +47,11 @@ module ReviewBot
     private
 
     def approved?
-      approvals_count > 1
+      if labels.include?('ez')
+        approvals_count.positive?
+      else
+        approvals_count > 1
+      end
     end
 
     def blocked?
