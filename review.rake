@@ -4,7 +4,7 @@ require 'json'
 CONFIG = JSON.parse(ENV['CONFIG'])
 SLACK_TOKEN    = ENV['SLACK_TOKEN']
 SLACK_BOT_NAME = 'reviewbot'
-SLACK_BOT_ICON = ':smile_cat:'
+SLACK_BOT_ICON = ':robot_face:'
 
 require_relative 'lib/review_bot'
 
