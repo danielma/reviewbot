@@ -13,10 +13,7 @@ module ReviewBot
 
     def message
       return if notifications.empty?
-
-      # :smile_cat: https://github.com/danielma/reviewbot/pull/3 needs a first review from :dma: :dmas_evil_twin:
-      message_header = ":smile_cat: :wave:\n"
-      message_header + notifications.map(&:message).join("\n\n")
+      notifications.map(&:message).join("\n")
     end
 
     def app_reviewers
