@@ -10,9 +10,7 @@ module ReviewBot
 
     def message
       [
-        %(• ##{pull_request.html_url} \
-          <#{pull_request.html_url}|#{pull_request.title}> \
-          needs a *#{needed_review_type}* from),
+        %(• ##{pull_request.id} <#{pull_request.html_url}|#{pull_request.title}> needs a *#{needed_review_type}* from),
         suggested_reviewers.map(&:slack_emoji).join(' ')
       ].join(' ')
     end
