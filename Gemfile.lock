@@ -43,6 +43,7 @@ GEM
       slop (~> 3.4)
     rack (1.6.4)
     rainbow (2.2.1)
+    rake (10.4.2)
     rest-client (1.8.0)
       http-cookie (>= 1.0.2, < 2.0)
       mime-types (>= 1.16, < 3.0)
@@ -69,6 +70,7 @@ DEPENDENCIES
   awesome_print
   github_api
   pry
+  rake
   rest-client
   rubocop
   timezone

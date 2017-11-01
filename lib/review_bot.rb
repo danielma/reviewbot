@@ -4,8 +4,6 @@ require 'github_api'
 require 'rest-client'
 require 'timezone'
 require 'time'
-require 'awesome_print'
-require 'pry'
 
 require_relative 'review_bot/hour_of_day'
 require_relative 'review_bot/pull_request'

@@ -1,9 +1,13 @@
 # frozen_string_literal: true
 source 'https://rubygems.org'
 
-gem 'awesome_print'
 gem 'github_api'
+gem 'rake'
 gem 'rest-client'
-gem 'rubocop'
 gem 'timezone'
-gem 'pry'
+
+group :development do
+  gem 'awesome_print'
+  gem 'pry'
+  gem 'rubocop'
+end
