@@ -47,11 +47,15 @@ module ReviewBot
     private
 
     def approved?
-      if labels.include?('ez')
-        approvals_count.positive?
+      if ez?
+        approvals_count > 0
       else
         approvals_count > 1
       end
+    end
+
+    def ez?
+      labels.include?('ez')
     end
 
     def blocked?
