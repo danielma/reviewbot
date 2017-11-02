@@ -1,3 +1,7 @@
+# v0.8.0
+
+- Update message formatting to use links (2017-11-01)
+
 # v0.7.1
 
 - FIX: handle a case where there are no available reviewers (2017-06-07)
