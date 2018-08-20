@@ -1,6 +1,13 @@
 # frozen_string_literal: true
 module ReviewBot
   class PullRequest < SimpleDelegator
+    attr_reader :ignore_in_progress
+
+    def initialize(pull_request, options = {})
+      super(pull_request)
+      @ignore_in_progress = options[:ignore_in_progress] || false
+    end
+
     def needs_review?
       !approved? && !blocked? && !review_in_progress?
     end
@@ -63,6 +70,8 @@ module ReviewBot
     end
 
     def review_in_progress?
+      return false if ignore_in_progress
+
       case reviewers.length
       when 0
         false

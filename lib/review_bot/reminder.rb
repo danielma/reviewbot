@@ -51,7 +51,7 @@ module ReviewBot
 
     def potential_notifications
       GH.pulls.list(owner, repo).body.map do |p|
-        pull = PullRequest.new(p)
+        pull = PullRequest.new(p, { ignore_in_progress: app_config['ignore_in_progress'] })
 
         print '.'
 
