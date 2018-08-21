@@ -4,9 +4,9 @@ describe ReviewBot::PullRequest do
   before do
     WebMock.allow_net_connect!
     stub_request(:get, "https://api.github.com/repos/ministrycentered/reviewbot/pulls").
-      to_return(status: 200, body: FakePullRequest.unreviewed.to_json, headers: {})
+      to_return(status: 200, body: FakePullRequest.data.to_json, headers: {})
     stub_request(:get, "https://api.github.com/repos/ministrycentered/reviewbot/issues/3").
-      to_return(status: 200, body: FakePullRequest.issues.to_json, headers: {})
+      to_return(status: 200, body: FakePullRequest.issues, headers: {})
 
     JSON.parse(ENV['CONFIG']).each do |app, app_config|
       @owner, @repo = app.split('/')
