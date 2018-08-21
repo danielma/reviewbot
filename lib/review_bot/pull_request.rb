@@ -2,6 +2,7 @@
 module ReviewBot
   class PullRequest < SimpleDelegator
     attr_reader :ignore_in_progress
+    alias ignore_in_progress? ignore_in_progress
 
     def initialize(pull_request, options = {})
       super(pull_request)
@@ -70,7 +71,7 @@ module ReviewBot
     end
 
     def review_in_progress?
-      return false if ignore_in_progress
+      return false if ignore_in_progress?
 
       case reviewers.length
       when 0
@@ -105,7 +106,9 @@ module ReviewBot
     end
 
     def reviews_from_other_humans
-      reviews_from_humans.select { |r| r.user.login != user.login }
+      reviews_from_humans.select do |r|
+        r.user.login != user.login && ignore_in_progress? ? r.approved? : true
+      end
     end
 
     def approvals_count
