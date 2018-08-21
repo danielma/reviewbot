@@ -13,7 +13,7 @@ describe ReviewBot::Reminder do
     end
   end
 
-  it 'returns a message' do
+  it 'returns a reminder' do
     expect(@reminder).to be_a ReviewBot::Reminder
   end
 end

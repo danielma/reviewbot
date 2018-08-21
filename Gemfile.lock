@@ -5,6 +5,8 @@ GEM
     ast (2.3.0)
     awesome_print (1.7.0)
     coderay (1.1.1)
+    crack (0.4.3)
+      safe_yaml (~> 1.0.0)
     descendants_tracker (0.0.4)
       thread_safe (~> 0.3, >= 0.3.1)
     diff-lcs (1.3)
@@ -20,6 +22,7 @@ GEM
       hashie (>= 3.4)
       multi_json (>= 1.7.5, < 2.0)
       oauth2
+    hashdiff (0.3.7)
     hashie (3.4.3)
     http-cookie (1.0.2)
       domain_name (~> 0.5)
@@ -70,6 +73,7 @@ GEM
       ruby-progressbar (~> 1.7)
       unicode-display_width (~> 1.0, >= 1.0.1)
     ruby-progressbar (1.8.1)
+    safe_yaml (1.0.4)
     slop (3.6.0)
     thread_safe (0.3.5)
     timecop (0.9.1)
@@ -78,6 +82,11 @@ GEM
       unf_ext
     unf_ext (0.0.7.2)
     unicode-display_width (1.1.3)
+    vcr (4.0.0)
+    webmock (3.4.2)
+      addressable (>= 2.3.6)
+      crack (>= 0.3.2)
+      hashdiff
 
 PLATFORMS
   ruby
@@ -93,6 +102,8 @@ DEPENDENCIES
   rubocop
   timecop
   timezone
+  vcr
+  webmock
 
 BUNDLED WITH
    1.16.3
