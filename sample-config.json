@@ -1,7 +1,8 @@
 {
-  "danielma/reviewbot": {
+  "ministrycentered/reviewbot": {
+    "slack_token": "555555",
     "room": "#reviewbot",
-    "bamboohr_subdomain": "mycompany",
+    "ignore_in_progress": true,
     "reviewers": [
       {
         "github": "danielma",
