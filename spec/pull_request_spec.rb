@@ -13,17 +13,31 @@ describe ReviewBot::PullRequest do
     @pull = ReviewBot::PullRequest.new(p)
   end
 
-    VCR.use_cassette('pull_requests') do
-      @p = GH.pulls.list(@owner, @repo).body.first
+    allow_any_instance_of(Github::Client::PullRequests).to receive(:list).and_wrap_original do |m, *args|
+      VCR.use_cassette('pull_requests') do
+        m.call(*args)
+      end
     end
+
+    allow_any_instance_of(Github::Client::Issues).to receive(:get).and_wrap_original do |m, *args|
+      VCR.use_cassette('issues') do
+        m.call(*args)
+      end
+    end
+
+    allow_any_instance_of(Github::Client::PullRequests::Reviews).to receive(:list).and_wrap_original do |m, *args|
+      VCR.use_cassette('reviews') do
+        m.call(*args)
+      end
+    end
+
+    @p = GH.pulls.list(@owner, @repo).body.first
 
     @pull = ReviewBot::PullRequest.new(@p)
   end
 
   it 'thing' do
-    VCR.use_cassette('issues') do
-      expect(@pull.needs_review?).to eq true
-    end
+    expect(@pull.needs_review?).to eq true
   end
 end
 
