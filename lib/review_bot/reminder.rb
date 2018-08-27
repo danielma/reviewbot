@@ -51,7 +51,7 @@ module ReviewBot
 
     def potential_notifications
       GH.pulls.list(owner, repo).body.map do |p|
-        pull = PullRequest.new(p)
+        pull = PullRequest.new(p, { notify_in_progress_reviewers: app_config['notify_in_progress_reviewers'] })
 
         print '.'
 

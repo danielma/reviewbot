@@ -1,6 +1,15 @@
 # frozen_string_literal: true
 module ReviewBot
   class PullRequest < SimpleDelegator
+    attr_reader :notify_in_progress_reviewers
+    alias notify_in_progress_reviewers? notify_in_progress_reviewers
+
+    def initialize(pull_request, options = {})
+      super(pull_request)
+
+      @notify_in_progress_reviewers = options[:notify_in_progress_reviewers] || false
+    end
+
     def needs_review?
       !approved? && !blocked? && !review_in_progress?
     end
@@ -63,6 +72,8 @@ module ReviewBot
     end
 
     def review_in_progress?
+      return false if notify_in_progress_reviewers?
+
       case reviewers.length
       when 0
         false
@@ -96,7 +107,9 @@ module ReviewBot
     end
 
     def reviews_from_other_humans
-      reviews_from_humans.select { |r| r.user.login != user.login }
+      reviews_from_humans.select do |r|
+        r.user.login != user.login && notify_in_progress_reviewers? ? r.approved? : true
+      end
     end
 
     def approvals_count

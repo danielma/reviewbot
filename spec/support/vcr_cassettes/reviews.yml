@@ -1,0 +1,74 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.github.com/repos/ministrycentered/reviewbot/pulls/1/reviews
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/vnd.github.black-cat-preview+json
+      Accept-Charset:
+      - utf-8
+      User-Agent:
+      - Github API Ruby Gem 0.18.2
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Mon, 27 Aug 2018 16:58:45 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Server:
+      - GitHub.com
+      Status:
+      - 200 OK
+      X-Ratelimit-Limit:
+      - '60'
+      X-Ratelimit-Remaining:
+      - '56'
+      X-Ratelimit-Reset:
+      - '1535392591'
+      Cache-Control:
+      - public, max-age=60, s-maxage=60
+      Vary:
+      - Accept
+      - Accept-Encoding
+      Etag:
+      - W/"9928f53c3947cf9a71e197d47593d8ca"
+      X-Github-Media-Type:
+      - github.v3; param=black-cat-preview; format=json
+      Access-Control-Expose-Headers:
+      - ETag, Link, Retry-After, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining,
+        X-RateLimit-Reset, X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval
+      Access-Control-Allow-Origin:
+      - "*"
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubdomains; preload
+      X-Frame-Options:
+      - deny
+      X-Content-Type-Options:
+      - nosniff
+      X-Xss-Protection:
+      - 1; mode=block
+      Referrer-Policy:
+      - origin-when-cross-origin, strict-origin-when-cross-origin
+      Content-Security-Policy:
+      - default-src 'none'
+      X-Runtime-Rack:
+      - '0.081216'
+      X-Github-Request-Id:
+      - F5AA:64C6:1F33460:27A7792:5B842DC5
+    body:
+      encoding: ASCII-8BIT
+      string: '[{"id":147834038,"node_id":"MDE3OlB1bGxSZXF1ZXN0UmV2aWV3MTQ3ODM0MDM4","user":{"login":"glosie","id":5737,"node_id":"MDQ6VXNlcjU3Mzc=","avatar_url":"https://avatars1.githubusercontent.com/u/5737?v=4","gravatar_id":"","url":"https://api.github.com/users/glosie","html_url":"https://github.com/glosie","followers_url":"https://api.github.com/users/glosie/followers","following_url":"https://api.github.com/users/glosie/following{/other_user}","gists_url":"https://api.github.com/users/glosie/gists{/gist_id}","starred_url":"https://api.github.com/users/glosie/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/glosie/subscriptions","organizations_url":"https://api.github.com/users/glosie/orgs","repos_url":"https://api.github.com/users/glosie/repos","events_url":"https://api.github.com/users/glosie/events{/privacy}","received_events_url":"https://api.github.com/users/glosie/received_events","type":"User","site_admin":false},"body":"","state":"COMMENTED","html_url":"https://github.com/ministrycentered/reviewbot/pull/1#pullrequestreview-147834038","pull_request_url":"https://api.github.com/repos/ministrycentered/reviewbot/pulls/1","author_association":"MEMBER","_links":{"html":{"href":"https://github.com/ministrycentered/reviewbot/pull/1#pullrequestreview-147834038"},"pull_request":{"href":"https://api.github.com/repos/ministrycentered/reviewbot/pulls/1"}},"submitted_at":"2018-08-20T21:43:03Z","commit_id":"9a57c108c1a0c7fe619bc6f40e8998a3b9deeeec"},{"id":147834141,"node_id":"MDE3OlB1bGxSZXF1ZXN0UmV2aWV3MTQ3ODM0MTQx","user":{"login":"geolessel","id":385726,"node_id":"MDQ6VXNlcjM4NTcyNg==","avatar_url":"https://avatars1.githubusercontent.com/u/385726?v=4","gravatar_id":"","url":"https://api.github.com/users/geolessel","html_url":"https://github.com/geolessel","followers_url":"https://api.github.com/users/geolessel/followers","following_url":"https://api.github.com/users/geolessel/following{/other_user}","gists_url":"https://api.github.com/users/geolessel/gists{/gist_id}","starred_url":"https://api.github.com/users/geolessel/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/geolessel/subscriptions","organizations_url":"https://api.github.com/users/geolessel/orgs","repos_url":"https://api.github.com/users/geolessel/repos","events_url":"https://api.github.com/users/geolessel/events{/privacy}","received_events_url":"https://api.github.com/users/geolessel/received_events","type":"User","site_admin":false},"body":"","state":"COMMENTED","html_url":"https://github.com/ministrycentered/reviewbot/pull/1#pullrequestreview-147834141","pull_request_url":"https://api.github.com/repos/ministrycentered/reviewbot/pulls/1","author_association":"MEMBER","_links":{"html":{"href":"https://github.com/ministrycentered/reviewbot/pull/1#pullrequestreview-147834141"},"pull_request":{"href":"https://api.github.com/repos/ministrycentered/reviewbot/pulls/1"}},"submitted_at":"2018-08-20T21:43:26Z","commit_id":"9a57c108c1a0c7fe619bc6f40e8998a3b9deeeec"}]'
+    http_version: 
+  recorded_at: Mon, 27 Aug 2018 16:58:45 GMT
+recorded_with: VCR 4.0.0

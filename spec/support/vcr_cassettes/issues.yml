@@ -1,0 +1,77 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.github.com/repos/ministrycentered/reviewbot/issues/1
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/vnd.github.v3+json,application/vnd.github.beta+json;q=0.5,application/json;q=0.1
+      Accept-Charset:
+      - utf-8
+      User-Agent:
+      - Github API Ruby Gem 0.18.2
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Mon, 27 Aug 2018 16:58:45 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Server:
+      - GitHub.com
+      Status:
+      - 200 OK
+      X-Ratelimit-Limit:
+      - '60'
+      X-Ratelimit-Remaining:
+      - '57'
+      X-Ratelimit-Reset:
+      - '1535392591'
+      Cache-Control:
+      - public, max-age=60, s-maxage=60
+      Vary:
+      - Accept
+      - Accept-Encoding
+      Etag:
+      - W/"7fee92f69c3cd8053b8d62950edc2cf9"
+      Last-Modified:
+      - Mon, 20 Aug 2018 21:43:26 GMT
+      X-Github-Media-Type:
+      - github.v3; format=json
+      Access-Control-Expose-Headers:
+      - ETag, Link, Retry-After, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining,
+        X-RateLimit-Reset, X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval
+      Access-Control-Allow-Origin:
+      - "*"
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubdomains; preload
+      X-Frame-Options:
+      - deny
+      X-Content-Type-Options:
+      - nosniff
+      X-Xss-Protection:
+      - 1; mode=block
+      Referrer-Policy:
+      - origin-when-cross-origin, strict-origin-when-cross-origin
+      Content-Security-Policy:
+      - default-src 'none'
+      X-Runtime-Rack:
+      - '0.061957'
+      X-Github-Request-Id:
+      - F5A9:64C5:1C3F6EF:23FA41C:5B842DC5
+    body:
+      encoding: ASCII-8BIT
+      string: '{"url":"https://api.github.com/repos/ministrycentered/reviewbot/issues/1","repository_url":"https://api.github.com/repos/ministrycentered/reviewbot","labels_url":"https://api.github.com/repos/ministrycentered/reviewbot/issues/1/labels{/name}","comments_url":"https://api.github.com/repos/ministrycentered/reviewbot/issues/1/comments","events_url":"https://api.github.com/repos/ministrycentered/reviewbot/issues/1/events","html_url":"https://github.com/ministrycentered/reviewbot/pull/1","id":352306007,"node_id":"MDExOlB1bGxSZXF1ZXN0MjA5NjUxMTU2","number":1,"title":"bogus","user":{"login":"awortham","id":6271986,"node_id":"MDQ6VXNlcjYyNzE5ODY=","avatar_url":"https://avatars0.githubusercontent.com/u/6271986?v=4","gravatar_id":"","url":"https://api.github.com/users/awortham","html_url":"https://github.com/awortham","followers_url":"https://api.github.com/users/awortham/followers","following_url":"https://api.github.com/users/awortham/following{/other_user}","gists_url":"https://api.github.com/users/awortham/gists{/gist_id}","starred_url":"https://api.github.com/users/awortham/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/awortham/subscriptions","organizations_url":"https://api.github.com/users/awortham/orgs","repos_url":"https://api.github.com/users/awortham/repos","events_url":"https://api.github.com/users/awortham/events{/privacy}","received_events_url":"https://api.github.com/users/awortham/received_events","type":"User","site_admin":false},"labels":[],"state":"open","locked":false,"assignee":null,"assignees":[],"milestone":null,"comments":2,"created_at":"2018-08-20T21:38:29Z","updated_at":"2018-08-20T21:43:26Z","closed_at":null,"author_association":"NONE","pull_request":{"url":"https://api.github.com/repos/ministrycentered/reviewbot/pulls/1","html_url":"https://github.com/ministrycentered/reviewbot/pull/1","diff_url":"https://github.com/ministrycentered/reviewbot/pull/1.diff","patch_url":"https://github.com/ministrycentered/reviewbot/pull/1.patch"},"body":"So
+        bogus","closed_by":null}'
+    http_version: 
+  recorded_at: Mon, 27 Aug 2018 16:58:45 GMT
+recorded_with: VCR 4.0.0
