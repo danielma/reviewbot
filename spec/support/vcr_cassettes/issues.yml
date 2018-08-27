@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://api.github.com/repos/ministrycentered/reviewbot/issues/3
+    uri: https://api.github.com/repos/ministrycentered/reviewbot/issues/1
     body:
       encoding: US-ASCII
       string: ''
@@ -21,7 +21,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Wed, 22 Aug 2018 20:57:34 GMT
+      - Mon, 27 Aug 2018 16:58:45 GMT
       Content-Type:
       - application/json; charset=utf-8
       Transfer-Encoding:
@@ -35,16 +35,16 @@ http_interactions:
       X-Ratelimit-Remaining:
       - '57'
       X-Ratelimit-Reset:
-      - '1534974855'
+      - '1535392591'
       Cache-Control:
       - public, max-age=60, s-maxage=60
       Vary:
       - Accept
       - Accept-Encoding
       Etag:
-      - W/"db9608f74862dd45a960fd9e39bb46a7"
+      - W/"7fee92f69c3cd8053b8d62950edc2cf9"
       Last-Modified:
-      - Tue, 21 Aug 2018 16:29:27 GMT
+      - Mon, 20 Aug 2018 21:43:26 GMT
       X-Github-Media-Type:
       - github.v3; format=json
       Access-Control-Expose-Headers:
@@ -65,13 +65,13 @@ http_interactions:
       Content-Security-Policy:
       - default-src 'none'
       X-Runtime-Rack:
-      - '0.052085'
+      - '0.061957'
       X-Github-Request-Id:
-      - C3CB:4CAF:68BAF:84D7F:5B7DCE3E
+      - F5A9:64C5:1C3F6EF:23FA41C:5B842DC5
     body:
       encoding: ASCII-8BIT
-      string: '{"url":"https://api.github.com/repos/ministrycentered/reviewbot/issues/3","repository_url":"https://api.github.com/repos/ministrycentered/reviewbot","labels_url":"https://api.github.com/repos/ministrycentered/reviewbot/issues/3/labels{/name}","comments_url":"https://api.github.com/repos/ministrycentered/reviewbot/issues/3/comments","events_url":"https://api.github.com/repos/ministrycentered/reviewbot/issues/3/events","html_url":"https://github.com/ministrycentered/reviewbot/pull/3","id":352619120,"node_id":"MDExOlB1bGxSZXF1ZXN0MjA5ODg1MzMz","number":3,"title":"Rspec
-        setup","user":{"login":"awortham","id":6271986,"node_id":"MDQ6VXNlcjYyNzE5ODY=","avatar_url":"https://avatars0.githubusercontent.com/u/6271986?v=4","gravatar_id":"","url":"https://api.github.com/users/awortham","html_url":"https://github.com/awortham","followers_url":"https://api.github.com/users/awortham/followers","following_url":"https://api.github.com/users/awortham/following{/other_user}","gists_url":"https://api.github.com/users/awortham/gists{/gist_id}","starred_url":"https://api.github.com/users/awortham/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/awortham/subscriptions","organizations_url":"https://api.github.com/users/awortham/orgs","repos_url":"https://api.github.com/users/awortham/repos","events_url":"https://api.github.com/users/awortham/events{/privacy}","received_events_url":"https://api.github.com/users/awortham/received_events","type":"User","site_admin":false},"labels":[],"state":"open","locked":false,"assignee":null,"assignees":[],"milestone":null,"comments":0,"created_at":"2018-08-21T16:29:27Z","updated_at":"2018-08-21T16:29:27Z","closed_at":null,"author_association":"NONE","pull_request":{"url":"https://api.github.com/repos/ministrycentered/reviewbot/pulls/3","html_url":"https://github.com/ministrycentered/reviewbot/pull/3","diff_url":"https://github.com/ministrycentered/reviewbot/pull/3.diff","patch_url":"https://github.com/ministrycentered/reviewbot/pull/3.patch"},"body":null,"closed_by":null}'
+      string: '{"url":"https://api.github.com/repos/ministrycentered/reviewbot/issues/1","repository_url":"https://api.github.com/repos/ministrycentered/reviewbot","labels_url":"https://api.github.com/repos/ministrycentered/reviewbot/issues/1/labels{/name}","comments_url":"https://api.github.com/repos/ministrycentered/reviewbot/issues/1/comments","events_url":"https://api.github.com/repos/ministrycentered/reviewbot/issues/1/events","html_url":"https://github.com/ministrycentered/reviewbot/pull/1","id":352306007,"node_id":"MDExOlB1bGxSZXF1ZXN0MjA5NjUxMTU2","number":1,"title":"bogus","user":{"login":"awortham","id":6271986,"node_id":"MDQ6VXNlcjYyNzE5ODY=","avatar_url":"https://avatars0.githubusercontent.com/u/6271986?v=4","gravatar_id":"","url":"https://api.github.com/users/awortham","html_url":"https://github.com/awortham","followers_url":"https://api.github.com/users/awortham/followers","following_url":"https://api.github.com/users/awortham/following{/other_user}","gists_url":"https://api.github.com/users/awortham/gists{/gist_id}","starred_url":"https://api.github.com/users/awortham/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/awortham/subscriptions","organizations_url":"https://api.github.com/users/awortham/orgs","repos_url":"https://api.github.com/users/awortham/repos","events_url":"https://api.github.com/users/awortham/events{/privacy}","received_events_url":"https://api.github.com/users/awortham/received_events","type":"User","site_admin":false},"labels":[],"state":"open","locked":false,"assignee":null,"assignees":[],"milestone":null,"comments":2,"created_at":"2018-08-20T21:38:29Z","updated_at":"2018-08-20T21:43:26Z","closed_at":null,"author_association":"NONE","pull_request":{"url":"https://api.github.com/repos/ministrycentered/reviewbot/pulls/1","html_url":"https://github.com/ministrycentered/reviewbot/pull/1","diff_url":"https://github.com/ministrycentered/reviewbot/pull/1.diff","patch_url":"https://github.com/ministrycentered/reviewbot/pull/1.patch"},"body":"So
+        bogus","closed_by":null}'
     http_version: 
-  recorded_at: Wed, 22 Aug 2018 20:57:34 GMT
+  recorded_at: Mon, 27 Aug 2018 16:58:45 GMT
 recorded_with: VCR 4.0.0

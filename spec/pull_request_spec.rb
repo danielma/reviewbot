@@ -31,13 +31,15 @@ describe ReviewBot::PullRequest do
       end
     end
 
-    @p = GH.pulls.list(@owner, @repo).body.first
+    pull_requests = GH.pulls.list(@owner, @repo).body
 
-    @pull = ReviewBot::PullRequest.new(@p)
+    @pull = ReviewBot::PullRequest.new(pull_requests.last)
   end
 
-  it 'thing' do
-    expect(@pull.needs_review?).to eq true
+  describe '#needs_review' do
+    it 'is true' do
+      expect(@pull.needs_review?).to eq false
+    end
   end
 end
 
