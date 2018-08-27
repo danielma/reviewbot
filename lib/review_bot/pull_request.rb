@@ -6,6 +6,7 @@ module ReviewBot
 
     def initialize(pull_request, options = {})
       super(pull_request)
+
       @ignore_in_progress = options[:ignore_in_progress] || false
     end
 
