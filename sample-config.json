@@ -2,7 +2,7 @@
   "ministrycentered/reviewbot": {
     "slack_token": "555555",
     "room": "#reviewbot",
-    "ignore_in_progress": true,
+    "notify_in_progress_reviewers": true,
     "reviewers": [
       {
         "github": "danielma",

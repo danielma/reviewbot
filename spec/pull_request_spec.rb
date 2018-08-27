@@ -29,13 +29,13 @@ describe ReviewBot::PullRequest do
 
     pull_requests = GH.pulls.list(@owner, @repo).body
 
-    @pull = ReviewBot::PullRequest.new(pull_requests.last, { ignore_in_progress: @app_config['ignore_in_progress'] })
+    @pull = ReviewBot::PullRequest.new(pull_requests.last, { notify_in_progress_reviewers: @app_config['notify_in_progress_reviewers'] })
   end
 
   describe '#needs_review' do
     context 'Pull request has two reviewer who have made comments, but no approvals' do
       context 'ignore in progress is false' do
-        let(:config) { {'ministrycentered/reviewbot': { 'ignore_in_progress': false }}.to_json }
+        let(:config) { {'ministrycentered/reviewbot': { 'notify_in_progress_reviewers': false }}.to_json }
 
         it 'is true' do
           expect(@pull.needs_review?).to eq false
@@ -43,7 +43,7 @@ describe ReviewBot::PullRequest do
       end
 
       context 'ignore in progress is true' do
-        let(:config) { {'ministrycentered/reviewbot': { 'ignore_in_progress': true }}.to_json }
+        let(:config) { {'ministrycentered/reviewbot': { 'notify_in_progress_reviewers': true }}.to_json }
 
         it 'is true' do
           expect(@pull.needs_review?).to eq true
